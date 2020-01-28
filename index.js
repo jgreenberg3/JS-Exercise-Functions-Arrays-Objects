@@ -86,7 +86,7 @@ function makeSmartPerson(personName/* code here */) {
         },
       speak : function()
         {
-        return "Hello, my name is " + name;
+        return "Hello, my name is " + this.name;
         },
   }
   return object;  
@@ -261,10 +261,16 @@ function getGermanCars(inventory/* code here */) {
   const germanCars = [];
 
   for(i=0;i<inventory.length;i++){
-    if(inventory[i].car_make === 'Audi' || 'Mercedes-Benz' || 'Volkswagen' || 'BMW'){
-      germanCars.push(inventory);
-    }
-  }
+    
+    switch(inventory[i].car_make){
+      case 'Audi':
+        case 'Mercedes-Benz':
+          case 'Volkswagen':
+            case 'BMW':
+              germanCars.push(inventory);
+              console.log("This is a " + inventory[i].car_make);
+      }
+ }
 
   return germanCars;
 }
@@ -287,9 +293,9 @@ function getGermanCars(inventory/* code here */) {
  *   return num * 2
  * }
 */
-const sum = null; // code here!
-const addFive = null; // code here!
-const argTimesTwo = null; // code here!
+const sum = (a,b) => a + b; // code here!
+const addFive = (num) => num + 5; // code here!
+const argTimesTwo = (num) => num * 2; // code here!
 
 /**
  * ### Challenge `carMaker`
@@ -304,8 +310,16 @@ const argTimesTwo = null; // code here!
  *         (1) causes the odometer in the object to be increased by the distance,
  *         (2) returns the updated value of the `odometer`.
 */
-function carMaker(/* code here */) {
+function carMaker(number/* code here */) {
   /* code here */
+
+  const newCar = {odometer:number, drive : function(distance){
+
+    this.odometer = this.odometer + distance;
+    return this.odometer;
+    }
+  }; 
+  return newCar;
 }
 
 /// ////// END OF CHALLENGE /////////
